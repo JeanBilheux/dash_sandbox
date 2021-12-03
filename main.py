@@ -1,3 +1,4 @@
+import os
 import dash
 import dash_html_components as html
 import dash_bootstrap_components as dbc
@@ -9,8 +10,12 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets,
                 meta_tags=[{'name': 'viewpoert',
                             'content': 'width=device-width, initial-scale=1.0, maximum-scale=4, minimum-scale=0.5'}])
 
+image_logo = 'team_logo.png'
+
 app.layout = html.Div([
     dbc.Row([
+        html.Img(src=app.get_asset_url(image_logo),
+                 height="60px"),
         html.H1("NE"),
         html.H5("utron "),
         html.H1("I"),
