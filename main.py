@@ -40,19 +40,24 @@ app.layout = html.Div([
                         class_name="header_col_right_padding"),
                 dbc.Col(html.H5("oolbox"),
                         class_name="header_col_left_padding"),
-                dbc.DropdownMenu(
-                        label="Tools",
-                        children=[
-                            dbc.DropdownMenuItem("Neutron Transmission"),
-                            dbc.DropdownMenuItem("Neutron Resonance"),
-                            dbc.DropdownMenuItem("Composition Converter"),
-                            dbc.DropdownMenuItem("Time of flight plotter"),
-                            dbc.DropdownMenuItem("Bragg edge simulator"),
-                            dbc.DropdownMenuItem("Golden angles"),
-                        ],
-                        color="primary",
-                        size="lg",
-                )
+                dbc.Col(html.Pre(""),
+                        class_name="header_dropdown_separator"),
+                dbc.Col(
+                    dbc.DropdownMenu(
+                            label="Tools",
+                            children=[
+                                dbc.DropdownMenuItem("Neutron Transmission"),
+                                dbc.DropdownMenuItem("Neutron Resonance"),
+                                dbc.DropdownMenuItem("Composition Converter"),
+                                dbc.DropdownMenuItem("Time of flight plotter"),
+                                dbc.DropdownMenuItem("Bragg edge simulator"),
+                                dbc.DropdownMenuItem("Golden angles"),
+                            ],
+                            color="primary",
+                            size="lg",
+                    ),
+                    class_name="header_dropdown",
+                ),
             ],
         align="center"),
     ],
