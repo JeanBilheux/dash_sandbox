@@ -6,3 +6,21 @@ div {
 .row_nav_bar {
     flex-basis: auto;
 }
+
+.header_col_right_padding {
+    padding-right: 0px;
+    padding-left: 0px;
+}
+
+.header_col_left_padding {
+    padding-left: 0px;
+}
+
+.header_col_left_padding_special_case_for_i {
+    margin-left: -25px;
+}
+
+.header_pre_padding {
+    padding-left: 2px;
+    padding-right: 0px;
+}
