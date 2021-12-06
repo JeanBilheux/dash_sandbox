@@ -3,10 +3,6 @@ div {
     padding-left: 2px;
 }
 
-.row_nav_bar {
-    flex-basis: auto;
-}
-
 .header_col_right_padding {
     padding-right: 0px;
     padding-left: 0px;
@@ -27,4 +23,17 @@ div {
 
 .header_dropdown_separator {
     margin-left: 100px;
+}
+
+.header_format {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 150px;
+}
+
+.navbar-collapse {
+}
+
+.ms-auto {
+    margin-left: 0px;
 }
