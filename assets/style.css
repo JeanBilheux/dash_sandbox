@@ -28,7 +28,7 @@ div {
 .header_format {
     display: flex;
     justify-content: space-between;
-    margin-right: 150px;
+    margin-right: 60px;
 }
 
 .navbar-collapse {

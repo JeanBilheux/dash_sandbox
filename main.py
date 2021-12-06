@@ -4,6 +4,10 @@ import dash_bootstrap_components as dbc
 from dash import dcc
 from dash.dependencies import Output, Input
 
+from apps import resonance, transmission, converter, tof_plotter, bragg, golden_angles
+from config import app_dict
+
+
 external_stylesheets = [dbc.themes.CYBORG, "assets/style.css"]
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets,
                 meta_tags=[{'name': 'viewpoert',
@@ -11,7 +15,8 @@ app = dash.Dash(__name__, external_stylesheets=external_stylesheets,
 
 image_logo = 'team_logo.png'
 
-app.layout = html.Div([
+
+home_page = html.Div([
     dbc.Navbar([
                 dbc.Row([
                     dbc.Col([
@@ -49,12 +54,12 @@ app.layout = html.Div([
                         label="Select a Tool",
                         id="list_of_tools_dropdown",
                         children=[
-                            dbc.DropdownMenuItem("Neutron Transmission", href="neutron_transmission"),
-                            dbc.DropdownMenuItem("Neutron Resonance", href="neutron_resonance"),
-                            dbc.DropdownMenuItem("Composition Converter", href="composition_converter"),
-                            dbc.DropdownMenuItem("Time of flight plotter", href='time_of_flight_plotter'),
-                            dbc.DropdownMenuItem("Bragg edge simulator", href='bragg_edge_simulator'),
-                            dbc.DropdownMenuItem("Golden angles", href='golden_angles'),
+                            dbc.DropdownMenuItem("Neutron Transmission", href="/transmission"),
+                            dbc.DropdownMenuItem("Neutron Resonance", href="/resonance"),
+                            dbc.DropdownMenuItem("Composition Converter", href="/converter"),
+                            dbc.DropdownMenuItem("Time of flight plotter", href='/tof_plotter'),
+                            dbc.DropdownMenuItem("Bragg edge simulator", href='/bragg'),
+                            dbc.DropdownMenuItem("Golden angles", href='/golden_angles'),
                         ],
                         color="primary",
                         size="lg",
@@ -68,21 +73,22 @@ app.layout = html.Div([
     html.Div(id='tool_selected_page'),
     html.Div(id='main_content')
 ])
+app.layout = home_page
 
 
 @app.callback(Output('main_content', 'children'),
-              Input('location', 'href'))
-def display_href(href):
-    return f"you are at: {href}"
+              Input('location', 'pathname'))
+def fill_main_content(pathname):
+    if pathname is None:
+        return "Loading ..."
 
-
-# @app.callback(Output('tool_selected_page', 'children'),
-#               Input('list_of_tools_dropdown', 'value'))
-# def display_tool_page(tool_selected):
-#     if tool_selected is None:
-#         return html.Div([])
-#
-#     return html.H2(f"Tool selected is {tool_selected}")
+    for _key in app_dict.keys():
+        if app_dict[_key]['url'] == pathname:
+            return eval(f"{_key}.layout")
+    if pathname == '/':
+        ""
+    else:
+        return '404: URL not founds!'
 
 
 if __name__ == '__main__':
