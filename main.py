@@ -6,12 +6,8 @@ from dash.dependencies import Output, Input, State
 
 from apps import resonance, transmission, converter, tof_plotter, bragg, golden_angles
 from config import app_dict
+from main_app import app
 
-
-external_stylesheets = [dbc.themes.COSMO, "assets/style.css"]
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets,
-                meta_tags=[{'name': 'viewpoert',
-                            'content': 'width=device-width, initial-scale=1.0, maximum-scale=4, minimum-scale=0.5'}])
 
 image_logo = 'team_logo.png'
 
@@ -74,24 +70,6 @@ home_page = html.Div([
     html.Div(id='main_content')
 ])
 app.layout = home_page
-
-
-# @app.callback(
-#     Output('app1_iso_check', 'style'),
-#     [
-#         Input('app1_iso_check', 'value'),
-#     ],
-#     [
-#         State('app1_iso_input', 'style'),
-#     ])
-# def show_hide_iso_table(iso_changed, style):
-#     if len(iso_changed) == 1:
-#         style['display'] = 'block'
-#     else:
-#         style['display'] = 'none'
-#
-#     print("in show_hide_iso_table")
-#     return style
 
 
 @app.callback(Output('main_content', 'children'),

@@ -4,6 +4,8 @@ from dash import dash_table as dt
 from config import app
 from _utilities import *
 from dash.dependencies import Input, Output, State
+from main_app import app
+
 
 sample_df_default = pd.DataFrame({
     chem_name: ['H2O'],
@@ -13,9 +15,6 @@ sample_df_default = pd.DataFrame({
 
 app_name = 'app1'
 app_id_dict = init_app_ids(app_name=app_name)
-print(app_id_dict)
-
-# print(f"app_id_dict: {app_id_dict}")
 
 layout = html.Div(
         [
