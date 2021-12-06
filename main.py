@@ -1,7 +1,8 @@
 import dash
 from dash import html
 import dash_bootstrap_components as dbc
-
+from dash import dcc
+from dash.dependencies import Output, Input
 
 external_stylesheets = [dbc.themes.CYBORG, "assets/style.css"]
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets,
@@ -45,24 +46,44 @@ app.layout = html.Div([
                     ],
                     align="center"),
                 dbc.DropdownMenu(
-                        label="Tools",
+                        label="Select a Tool",
+                        id="list_of_tools_dropdown",
                         children=[
-                            dbc.DropdownMenuItem("Neutron Transmission"),
-                            dbc.DropdownMenuItem("Neutron Resonance"),
-                            dbc.DropdownMenuItem("Composition Converter"),
-                            dbc.DropdownMenuItem("Time of flight plotter"),
-                            dbc.DropdownMenuItem("Bragg edge simulator"),
-                            dbc.DropdownMenuItem("Golden angles"),
+                            dbc.DropdownMenuItem("Neutron Transmission", href="neutron_transmission"),
+                            dbc.DropdownMenuItem("Neutron Resonance", href="neutron_resonance"),
+                            dbc.DropdownMenuItem("Composition Converter", href="composition_converter"),
+                            dbc.DropdownMenuItem("Time of flight plotter", href='time_of_flight_plotter'),
+                            dbc.DropdownMenuItem("Bragg edge simulator", href='bragg_edge_simulator'),
+                            dbc.DropdownMenuItem("Golden angles", href='golden_angles'),
                         ],
                         color="primary",
                         size="lg",
                 ),
             ],
-        class_name="header_format",
-        color="black",
+            class_name="header_format",
+            color="black",
         ),
+    dcc.Location(id='location'),
     html.Hr(),
+    html.Div(id='tool_selected_page'),
+    html.Div(id='main_content')
 ])
+
+
+@app.callback(Output('main_content', 'children'),
+              Input('location', 'href'))
+def display_href(href):
+    return f"you are at: {href}"
+
+
+# @app.callback(Output('tool_selected_page', 'children'),
+#               Input('list_of_tools_dropdown', 'value'))
+# def display_tool_page(tool_selected):
+#     if tool_selected is None:
+#         return html.Div([])
+#
+#     return html.H2(f"Tool selected is {tool_selected}")
+
 
 if __name__ == '__main__':
     app.run_server(debug=True)
