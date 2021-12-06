@@ -2,13 +2,13 @@ import dash
 from dash import html
 import dash_bootstrap_components as dbc
 from dash import dcc
-from dash.dependencies import Output, Input
+from dash.dependencies import Output, Input, State
 
 from apps import resonance, transmission, converter, tof_plotter, bragg, golden_angles
 from config import app_dict
 
 
-external_stylesheets = [dbc.themes.CYBORG, "assets/style.css"]
+external_stylesheets = [dbc.themes.COSMO, "assets/style.css"]
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets,
                 meta_tags=[{'name': 'viewpoert',
                             'content': 'width=device-width, initial-scale=1.0, maximum-scale=4, minimum-scale=0.5'}])
@@ -29,10 +29,10 @@ home_page = html.Div([
                     ),
                     dbc.Col(html.Pre(""),
                             class_name="header_pre_padding"),
-                    dbc.Col(html.H1("NE"),
+                    dbc.Col(html.H1("NEU"),
                             width="auto",
                             class_name="header_col_right_padding"),
-                    dbc.Col(html.H5("utron"),
+                    dbc.Col(html.H5("tron"),
                             width="auto"),
                     dbc.Col(html.Pre(""),
                             class_name="header_pre_padding"),
@@ -66,14 +66,32 @@ home_page = html.Div([
                 ),
             ],
             class_name="header_format",
-            color="black",
+            color="white",
         ),
     dcc.Location(id='location'),
-    html.Hr(),
+    html.Hr(style={'borderTop': '3px solid blue'}),
     html.Div(id='tool_selected_page'),
     html.Div(id='main_content')
 ])
 app.layout = home_page
+
+
+# @app.callback(
+#     Output('app1_iso_check', 'style'),
+#     [
+#         Input('app1_iso_check', 'value'),
+#     ],
+#     [
+#         State('app1_iso_input', 'style'),
+#     ])
+# def show_hide_iso_table(iso_changed, style):
+#     if len(iso_changed) == 1:
+#         style['display'] = 'block'
+#     else:
+#         style['display'] = 'none'
+#
+#     print("in show_hide_iso_table")
+#     return style
 
 
 @app.callback(Output('main_content', 'children'),

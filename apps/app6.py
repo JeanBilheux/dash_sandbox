@@ -1,14 +1,14 @@
 import dash
 import dash_html_components as html
-import dash_core_components as dcc
+from dash import dcc
 import dash_bootstrap_components as dbc
 from dash.dependencies import Output, Input
 import pandas as pd
 import numpy as np
 import plotly.graph_objects as go
-import dash_table as dt
+from dash import dash_table as dt
 
-from _app import app
+from config import app
 from apps.utilities.file import make_ascii_file
 from _utilities import *
 
