@@ -5,6 +5,7 @@ from config import app
 from _utilities import *
 from dash.dependencies import Input, Output, State
 from main_app import app
+import dash_bootstrap_components as dbc
 
 
 sample_df_default = pd.DataFrame({
@@ -18,9 +19,13 @@ app_id_dict = init_app_ids(app_name=app_name)
 
 layout = html.Div(
         [
-            # init_app_links(current_app=app_name, app_dict_all=app_dict),
-            # init_app_about(current_app=app_name, app_id_dict=app_id_dict),
-
+            dbc.Row([html.H2("Neutron Transmission",
+                             style=({'color': 'blue'}),
+                             ),
+                     ],
+                    class_name='title_tools',
+            ),
+            html.Hr(style={'borderTop': '3px solid blue'}),
             # Beamline selection
             html.Div(
                     [
@@ -148,9 +153,9 @@ layout = html.Div(
                     id=app_id_dict['output_id'],
                     style={'display': 'none'},
             ),
-        ]
+        ],
+        style={'margin': '25px'}
 )
-
 
 @app.callback(
     Output(app_id_dict['app_info_id'], 'style'),
