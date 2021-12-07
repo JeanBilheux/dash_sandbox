@@ -87,7 +87,8 @@ layout = html.Div(
             id=app_id_dict['output_id'],
             style={'display': 'none'},
         ),
-    ]
+    ],
+    style={'margin': '25px'}
 )
 
 

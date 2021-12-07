@@ -257,7 +257,6 @@ def update_iso_table(database, sample_tb_rows, prev_iso_tb_rows):
         State(app_id_dict['iso_div_id'], 'style'),
     ])
 def show_hide_iso_table(iso_changed, style):
-    print("in show_ide_iso_table")
     if len(iso_changed) == 1:
         style['display'] = 'block'
     else:

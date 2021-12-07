@@ -8,7 +8,6 @@ from apps import resonance, transmission, converter, tof_plotter, bragg, golden_
 from config import app_dict
 from main_app import app
 
-
 image_logo = 'team_logo.png'
 
 
