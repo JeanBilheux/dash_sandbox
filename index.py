@@ -4,14 +4,14 @@ import dash_bootstrap_components as dbc
 from dash import dcc
 from dash.dependencies import Output, Input, State
 
-from apps import resonance, transmission, converter, tof_plotter, bragg, golden_angles
+from apps import resonance, transmission, converter, tof_plotter, bragg, golden_angles, home_page
 from config import app_dict
 from app import app
 
 image_logo = 'team_logo.png'
 
 
-home_page = html.Div([
+header = html.Div([
     dbc.Navbar([
                 dbc.Row([
                     dbc.Col([
@@ -69,7 +69,7 @@ home_page = html.Div([
     html.Div(id='tool_selected_page'),
     html.Div(id='main_content')
 ])
-app.layout = home_page
+app.layout = header
 
 
 @app.callback(Output('main_content', 'children'),
@@ -82,7 +82,7 @@ def fill_main_content(pathname):
         if app_dict[_key]['url'] == pathname:
             return eval(f"{_key}.layout")
     if pathname == '/':
-        ""
+        return home_page.layout
     else:
         return '404: URL not founds!'
 
