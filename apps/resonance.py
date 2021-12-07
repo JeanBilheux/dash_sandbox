@@ -1,5 +1,5 @@
 from dash.dependencies import Input, Output, State
-from main_app import app
+from app import app
 import matplotlib.pyplot as plt
 from _utilities import *
 import dash_bootstrap_components as dbc

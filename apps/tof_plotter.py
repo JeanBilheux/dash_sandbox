@@ -1,7 +1,7 @@
 from dash.dependencies import Input, Output, State
 import dash_bootstrap_components as dbc
 
-from main_app import app
+from app import app
 from _utilities import *
 import plotly.tools as tls
 import matplotlib.pyplot as plt

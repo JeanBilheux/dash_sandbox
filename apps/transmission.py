@@ -4,7 +4,7 @@ from dash import dash_table as dt
 from config import app
 from _utilities import *
 from dash.dependencies import Input, Output, State
-from main_app import app
+from app import app
 import dash_bootstrap_components as dbc
 
 

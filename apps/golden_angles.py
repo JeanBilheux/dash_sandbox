@@ -7,7 +7,7 @@ import pandas as pd
 import numpy as np
 import plotly.graph_objects as go
 from dash import dash_table as dt
-from main_app import app
+from app import app
 
 from _utilities import *
 

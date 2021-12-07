@@ -6,7 +6,7 @@ from dash.dependencies import Output, Input, State
 
 from apps import resonance, transmission, converter, tof_plotter, bragg, golden_angles
 from config import app_dict
-from main_app import app
+from app import app
 
 image_logo = 'team_logo.png'
 
