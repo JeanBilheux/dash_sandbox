@@ -12,12 +12,16 @@ div {
     padding-left: 0px;
 }
 
+.header_tron {
+    margin-left: -10px;
+}
+
 .header_col_left_padding {
     padding-left: 0px;
 }
 
 .header_col_left_padding_special_case_for_i {
-    margin-left: -5px;
+    margin-left: -10px;
 }
 
 .header_pre_padding {
