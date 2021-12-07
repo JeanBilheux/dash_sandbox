@@ -55,7 +55,9 @@ layout = html.Div([
                         html.Div(id='table')
                     ], label='Data'),
                     dbc.Tab([
-                        dcc.Graph(id='plot')
+                        dcc.Graph(id='plot',
+                                  config={'displaylogo': False,
+                                          })
 
                     ], label='Plot')
                 ]),
@@ -91,6 +93,7 @@ def update_golden_angles(max_angle_value, total_number_of_angles):
                                   mode='markers+lines'))
     fig.layout.xaxis.title = "Iteration number"
     fig.layout.paper_bgcolor = '#E5ECF6'
+
 
     table = dt.DataTable(columns=([{'id': 'angles', 'name': 'Angles (degrees)', 'type': 'numeric', 'editable':
         False}]),
